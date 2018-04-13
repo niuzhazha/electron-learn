@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="./lib/layui/css/layui.css">
+    <style>
+      html, body {
+        height: 100%;
+      }
+      button,
+      a {
+        -webkit-app-region: no-drag;
+      }
+      a {
+        text-decoration: none;
+        color: #333;
+      }
+      nav {
+        min-width: 80px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background-color: #0089ff;
+        padding-top: 30px;
+      }
+      nav a {
+        display: block;
+        width: 80px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: #fff;
+      }
+      nav a:hover {
+        background-color: #387ab3;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      .content-body {
+        margin-left: 80px
+      }
+    </style>
+  </head>
+  <body style="-webkit-app-region: drag">
+    <nav id="g_nav"></nav>
+    <script id="navTpl" type="text/html">
+      {{#  layui.each(d.gNav, function(index, item){ }}
+        <a href="javascript:;" class="active">{{ item.title }}</a>
+      {{#  }); }}
+      {{#  if(d.gNav.length === 0){ }}
+        无数据
+      {{#  } }} 
+      </ul>
+    </script>
+    
+    <script id="home_schoolsTpl" type="text/html">
+      {{#  layui.each(d.gHomeSchools, function(index, item){ }}
+        <a href="{{item.location}}" class="item item{{index + 1}}">
+          <span>{{ item.name }}</span>
+        </a>
+      {{#  }); }}
+      {{#  if(d.gHomeSchools.length === 0){ }}
+        无数据
+      {{#  } }} 
+      </ul>
+    </script>
+    <section class="content-body">
+    <section id="g_home_schools"></section>
+      <section id="g_home_elite_course"></section>
+      <section id="g_home_live_course"></section>
+      <section id="g_home_microdegree_course"></section>
+      <section id="g_home_self_learn"></section>
+      <section id="g_home_moocap"></section>
+      <section id="g_home_hot_knowledge"></section>
+      <section id="g_home_xt_news"></section>
+      <section id="g_home_cooperative_partner"></section>
+    </section>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    <!-- We are using Node.js <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>. -->
+    <script src="./lib/layui/layui.js"></script>
+    <script>
+      // You can also require other files to run in this process
+      // require('./renderer.js')
+
+      layui.config({
+        base: './modules/' //你存放新模块的目录，注意，不是layui的模块目录
+      }).use('index'); //加载入口
+    </script>
+  </body>
+</html>
